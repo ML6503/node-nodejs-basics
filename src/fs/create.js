@@ -1,26 +1,29 @@
 import * as fs from 'fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-
-
-export const create = async () => {
-    const __dirname = path.resolve(path.dirname("src/fs/files/*"));
-
+export const create = async () => { 
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const file = 'fresh.txt';
+    const newFileLocation = path.join(__dirname, '/files', file);
     let data = 'I am fresh and young';
      
        try {
-        await fs.open(path.join(__dirname,'fresh.txt'), 'r')
+       
+        await fs.open( newFileLocation, 'r')
         .then(() => {
            throw new Error('FS operation failed');
         })
         .catch((error)=>{
            if (error.code !== 'ENOENT') {
+            console.log(`${file} 'exists'`);
             console.error(error);
+            return;
            }
-           
-       });
-       
-        await fs.writeFile(path.join(__dirname,'fresh.txt'), data); 
+           fs.writeFile( newFileLocation, data); 
+       });      
+    
 
        } catch (e) {
            console.error(e);
