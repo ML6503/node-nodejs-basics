@@ -12,14 +12,17 @@ const newFilesFolderPath = path.join(__dirname,newFilesFolder);
 
 
 export const copy = async () => {
-    //check if folder files exists or folder files_copy exists
-    // throw err if files_copy already exists and/ or folder files is not
-    // create copy of folder and files into files_copy if no err thrown
+   
+   
+  
 
     try {
+         //check if folder files exists or folder files_copy exists
+          // throw err if files_copy already exists and/ or folder files is not
         if(existsSync(filesFolderPath) && !existsSync(newFilesFolderPath)) {
+            // create folder with files_copy name 
             await fs.mkdir(newFilesFolderPath);
-           
+            // copy all files from copy folder into files_copy if no err thrown
                 const files = await fs.readdir(filesFolderPath);
                 for (const file of files) {
                     let  filePath = filesFolderPath + '/' + file;
