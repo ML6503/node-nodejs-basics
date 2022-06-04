@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import { existsSync } from 'node:fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
