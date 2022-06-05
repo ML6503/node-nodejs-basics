@@ -7,7 +7,7 @@ export const transform = async () => {
     const reversTransform = new Transform({
         transform: (chunk, _encoding, callback) => callback(null, chunk.toString().split('').reverse().join(''))
     });
-  pipeline(
+   pipeline(
       stdin,
       reversTransform,
       stdout,
