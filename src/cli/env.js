@@ -1,6 +1,12 @@
 export const parseEnv = () => {
-    // Write your code here 
+    const argsLength = process.argv.slice(2).length;
+
+    const args = process.argv.slice(2).map((a, i) => i % 2 ? i !== argsLength - 1 ? a + ', ' : a : a + ' is ');
+
+    console.log('args', args. join(''));
 };
+
+parseEnv();
 
 // function that parses command line arguments
 // (given in format --propName value --prop2Name value2, you don't need to validate it)
