@@ -8,7 +8,7 @@ import a from './files/a.json' assert { type: 'json' };
 import b from './files/b.json' assert { type: 'json' };
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
-const fileCurrentPath = path.join(__dirname, 'files', 'cjsToEsm.mjs');
+const fileCurrentPath = path.join(__dirname, 'cjsToEsm.mjs');
 
 const random = Math.random();
 
